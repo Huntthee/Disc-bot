@@ -51,12 +51,12 @@ client.on('ready', () => {
     guild.channels.cache.forEach((channel) => {
       console.log(` - ${channel.name} ${channel.type} ${channel.id}`)
     })
-    
+    // Coding Text Channel ID: 748276590089076889
   })
 
   // Join whichever channel you want your bot in.
-  let generalChannel = client.channels.cache.get("YOURCHANNELID")
-  const attachment = new Discord.MessageAttachment("")
+  let generalChannel = client.channels.cache.get("782832103913029672")
+  const attachment = new Discord.MessageAttachment("assets/truth.png")
   // generalChannel.send(attachment)
   // generalChannel.send("I'm in here now.")
 })
@@ -69,18 +69,22 @@ client.on('message', (receivedMessage) => {
   }
 
   // Parrot every post made in the channel, bad idea.
+
   // receivedMessage.channel.send("Message received, " + receivedMessage.author.toString() + ": " + receivedMessage.content)
 
   // Post an emoji every time someone posts.. also bad idea.
+
   //receivedMessage.react("")
 
   // Get a list of the custom emoji ids!
+
   /* receivedMessage.guild.emojis.cache.forEach(customEmoji => {
     console.log(`${customEmoji.name} ${customEmoji.id}`)
   }) */
 
   // Slap a custom reaction emote on every post.
-  // let customEmoji = receivedMessage.guild.emojis.cache.get("ANY CUSTOM EMOTE CODE")
+
+  // let customEmoji = receivedMessage.guild.emojis.cache.get("754432775414611969")
   // receivedMessage.react(customEmoji)
 
   if (receivedMessage.content.startsWith("!")) {
@@ -116,7 +120,7 @@ function processCommand(receivedMessage) {
     // ADD MORE COMMANDS HERE with more else if 
 
   } else {
-    receivedMessage.channel.send("Unknown command. Try `!help or !math`")
+    receivedMessage.channel.send("Unknown command. Try `!help`")
   }
 }
 
@@ -136,7 +140,11 @@ function multCommand(arguments, receivedMessage) {
 // Basic help command! nothing attached to it right now. 
 function helpCommand(arguments, receivedMessage) {
   if (arguments.length == 0) {
-    receivedMessage.channel.send("I'm not sure what you need help with. Try `!help [topic]` though it might not do you any good.")
+    receivedMessage.channel.send("Hey there! Try `!help commands` to see what you can do.")
+  
+  } else if (arguments == "commands"){
+    receivedMessage.channel.send("The commands you can use so far are `!mult, !add, !size and !joke`")
+
   } else {
     receivedMessage.channel.send("It looks like you need help with " + arguments + " but I'm too dumb right now.")
   }
@@ -165,4 +173,4 @@ function addCommand(arguments, receivedMessage) {
   receivedMessage.channel.send(arguments + " = " + product.toString())
 }
 
-client.login("YOUR TOKEN HERE")
+client.login("")
