@@ -69,22 +69,18 @@ client.on('message', (receivedMessage) => {
   }
 
   // Parrot every post made in the channel, bad idea.
-
   // receivedMessage.channel.send("Message received, " + receivedMessage.author.toString() + ": " + receivedMessage.content)
 
   // Post an emoji every time someone posts.. also bad idea.
-
   //receivedMessage.react("")
 
   // Get a list of the custom emoji ids!
-
   /* receivedMessage.guild.emojis.cache.forEach(customEmoji => {
     console.log(`${customEmoji.name} ${customEmoji.id}`)
   }) */
 
   // Slap a custom reaction emote on every post.
-
-  // let customEmoji = receivedMessage.guild.emojis.cache.get("")
+  // let customEmoji = receivedMessage.guild.emojis.cache.get("ANY CUSTOM EMOTE CODE")
   // receivedMessage.react(customEmoji)
 
   if (receivedMessage.content.startsWith("!")) {
@@ -169,4 +165,4 @@ function addCommand(arguments, receivedMessage) {
   receivedMessage.channel.send(arguments + " = " + product.toString())
 }
 
-client.login("")
+client.login("YOUR TOKEN HERE")
