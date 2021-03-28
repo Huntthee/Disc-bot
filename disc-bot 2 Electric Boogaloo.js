@@ -89,7 +89,7 @@ const quoteRando = [
     quote: "Doc did it"
   }
 
-
+  
 ]
 
 // When the bot connects to the server.

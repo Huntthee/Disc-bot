@@ -1,6 +1,46 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 
+// List of random nouns hehe
+const noun = [
+  {
+    word: "hamburger"
+  },
+  {
+    word: "spoon"
+  },
+  {
+    word: "leaf"
+  },
+  {
+    word: "candy"
+  },
+  {
+    word: "card"
+  },
+  {
+    word: "dog"
+  },
+  {
+    word: "glass"
+  },
+  {
+    word: "book"
+  },
+  {
+    word: "salt"
+  },
+  {
+    word: "spear"
+  }
+]
+
+const words = roll()
+
+function roll() {
+  return noun[Math.floor(Math.random() * noun.length)].word
+}
+
 // The Array of Chuck Norris Jokes xD
 const norrisJoke = [
   {
@@ -40,7 +80,7 @@ const norrisJoke = [
 
 //A bunch of random quotes by your loyal destructor, Nic (a.k.a. FlameScion)
 const quoteRando = [
-  {
+  /* {
     quote: "I don't wanna be horny anymore, I just wanna be happy...."
   },
   {
@@ -69,7 +109,25 @@ const quoteRando = [
   },
   {
     quote: " 'I spent so much time thinking if I could, I never stopped to think if I should'-FlameScion, trying to get this FUCKING COMMAND working "
-  }
+  },
+  {
+    quote: "Does this unit have a soul?"
+  },
+  {
+    quote: "What is a man? A MISERABLE LITTLE PILE OF SECRETS!"
+  }, */
+  {
+    quote: `It's dangerous to go alone. Take this ${words}` 
+  },
+  /* {
+    quote: "IT'S TIME TO D-D-D-D-D-D-D-D-DUEEEL!"
+  },
+  {
+    quote: "There was some code here. Now it's gone"
+  },
+  {
+    quote: "Doc did it"
+  } */
 ]
 
 
