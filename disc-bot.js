@@ -412,4 +412,4 @@ function play(guild, song) {
 
 // ******                    ****** //
 
-client.login("ODIyNjY0ODczMzQ3MTIxMTYy.YFVkXg.DOzK8fNvN1ctKFfS1xyfZ8Xoar4")
+client.login("")
