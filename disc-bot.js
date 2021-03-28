@@ -51,7 +51,7 @@ client.on('ready', () => {
     guild.channels.cache.forEach((channel) => {
       console.log(` - ${channel.name} ${channel.type} ${channel.id}`)
     })
-    // Coding Text Channel ID: 748276590089076889
+    // Coding Text Channel ID: 782832103913029672
   })
 
   // Join whichever channel you want your bot in.
@@ -92,7 +92,6 @@ client.on('message', (receivedMessage) => {
   }
 })
 
-
 // Set up the structure for building chat commands and assigning the !word
 function processCommand(receivedMessage) {
   let fullCommand = receivedMessage.content.substr(1)
@@ -116,6 +115,9 @@ function processCommand(receivedMessage) {
 
   } else if (primaryCommand == "add") {
     addCommand(arguments, receivedMessage)
+
+  } else if (primaryCommand == "roll") {
+    rollCommand(arguments, receivedMessage)
 
     // ADD MORE COMMANDS HERE with more else if 
 
@@ -143,7 +145,7 @@ function helpCommand(arguments, receivedMessage) {
     receivedMessage.channel.send("Hey there! Try `!help commands` to see what you can do.")
   
   } else if (arguments == "commands"){
-    receivedMessage.channel.send("The commands you can use so far are `!mult, !add, !size and !joke`")
+    receivedMessage.channel.send("The commands you can use so far are `!mult, !add, !size, !roll (to roll a D20) and !joke`")
 
   } else {
     receivedMessage.channel.send("It looks like you need help with " + arguments + " but I'm too dumb right now.")
@@ -152,7 +154,7 @@ function helpCommand(arguments, receivedMessage) {
 
 // Deserts' reminder for twitch panel sizes
 function sizeCommand(arguments, receivedMessage) {
-  receivedMessage.channel.send("320 x 160 pixels!")
+  receivedMessage.channel.send("Twitch Panels are 320 x 160 pixels!")
 }
 
 // The Chuck Norris Joke maker!
@@ -172,5 +174,21 @@ function addCommand(arguments, receivedMessage) {
   })
   receivedMessage.channel.send(arguments + " = " + product.toString())
 }
+
+// Roll the Die!
+function rollCommand(arguments, receivedMessage) { 
+  const sides = 20;
+  const roll = Math.floor(Math.random() * sides) + 1;
+
+  if (roll == 20) {
+    receivedMessage.channel.send(`WHOA! Nice Crits, You rolled a ${roll}`)
+  } else if (roll == 1) {
+    receivedMessage.channel.send(`OOF, That's gotta hurt. You rolled a ${roll}`)
+  } else {
+    receivedMessage.channel.send(`You rolled a ${roll}`)
+  }
+}
+
+
 
 client.login("")
