@@ -10,16 +10,23 @@ This chatbot has been whipped together based on a tutorial shown on YouTube, a f
 - Add and Multiply
 - And the Music Player!
 
-## Things to add in the future
-- Mention replies
-- D100 die roller
-- Banhammer for naughty words lol!
-- Shameless plugger for Des/mine work
-- Simple chat AI?
+## To-Do List
+- [x] Add/Multiply
+- [x] Jokes
+- [x] D20 Die Roller
+- [x] Random Quotes
+- [x] Music Player
+- [ ] Mention Replies
+- [ ] D100 Die Roller
+- [ ] Banhammer for naughty words lol!
+- [ ] Shameless plugger for Des/mine work
+- [ ] Simple chat AI?
+
+---
 
 
 ## Attributions
 - FlameScion for adding quotes and helping me test the various commands!
 - And of course [Stackoverflow](https://stackoverflow.com/) for all those tricky bits
-- [This feeeCodeCamp tutorial](https://www.freecodecamp.org/news/how-to-create-a-music-bot-using-discord-js-4436f5f3f0f8/)
+- [This feeeCodeCamp tutorial](https://www.freecodecamp.org/news/how-to-create-a-music-bot-using-discord-js-4436f5f3f0f8/) for our music features.
 - [This Video from Codecamp on YouTube](https://www.youtube.com/watch?v=8o25pRbXdFw) Helped me get the basic code structure down which I have since been able to build off of.
