@@ -39,6 +39,7 @@ const words = roll()
 
 function roll() {
   return noun[Math.floor(Math.random() * noun.length)].word
+  
 }
 
 // The Array of Chuck Norris Jokes xD
@@ -80,7 +81,7 @@ const norrisJoke = [
 
 //A bunch of random quotes by your loyal destructor, Nic (a.k.a. FlameScion)
 const quoteRando = [
-  /* {
+  {
     quote: "I don't wanna be horny anymore, I just wanna be happy...."
   },
   {
@@ -115,11 +116,11 @@ const quoteRando = [
   },
   {
     quote: "What is a man? A MISERABLE LITTLE PILE OF SECRETS!"
-  }, */
+  },
   {
     quote: `It's dangerous to go alone. Take this ${words}` 
   },
-  /* {
+  {
     quote: "IT'S TIME TO D-D-D-D-D-D-D-D-DUEEEL!"
   },
   {
@@ -127,7 +128,7 @@ const quoteRando = [
   },
   {
     quote: "Doc did it"
-  } */
+  }
 ]
 
 
