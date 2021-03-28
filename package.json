@@ -1,0 +1,25 @@
+{
+  "name": "disc-bot",
+  "version": "0.1.0",
+  "description": "A silly little discord bot!",
+  "main": "disc-bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Huntthee/Disc-bot.git"
+  },
+  "keywords": [],
+  "author": "Mike Allison",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Huntthee/Disc-bot/issues"
+  },
+  "homepage": "https://github.com/Huntthee/Disc-bot#readme",
+  "dependencies": {
+    "discord": "^0.8.2",
+    "discord.js": "^12.5.1",
+    "unirest": "^0.6.0"
+  }
+}
