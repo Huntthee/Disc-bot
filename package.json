@@ -18,8 +18,13 @@
   },
   "homepage": "https://github.com/Huntthee/Disc-bot#readme",
   "dependencies": {
+    "@discordjs/opus": "^0.5.0",
     "discord": "^0.8.2",
     "discord.js": "^12.5.1",
-    "unirest": "^0.6.0"
+    "ffmpeg": "0.0.4",
+    "ffmpeg-static": "^4.2.8",
+    "fluent-ffmpeg": "^2.1.2",
+    "unirest": "^0.6.0",
+    "ytdl-core": "^4.5.0"
   }
 }
