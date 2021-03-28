@@ -92,7 +92,7 @@ client.on('ready', () => {
   let generalChannel = client.channels.cache.get("782832103913029672")
   const attachment = new Discord.MessageAttachment("assets/truth.png")
   // generalChannel.send(attachment)
-  generalChannel.send("Im a real boy!")
+  // generalChannel.send("Im a real boy!")
 
 })
 
@@ -234,4 +234,4 @@ function quoteCommand(arguments, recievedMessage){
   recievedMessage.channel.send(`${quoteRando[Math.floor(Math.random() * quoteRando.length)].quote}`)
 }
 
-client.login("ODIyNjY0ODczMzQ3MTIxMTYy.YFVkXg.zYzR3hwzHFYz1cVj6wNKcLi-cM4")
+client.login("")
