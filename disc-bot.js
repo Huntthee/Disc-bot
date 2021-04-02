@@ -1,14 +1,143 @@
 const Discord = require('discord.js')
-const ytdl = require("ytdl-core")
-const norrisJoke = require('./commands/jokes')
-const quoteRando = require('./commands/quotes')
-const prefix = "?"
+const ytdl = require("ytdl-core");
+const prefix = "?";
 
 const client = new Discord.Client()
 
-const queue = new Map()
+const queue = new Map();
 
 // List of random nouns hehe
+const noun = [
+  {
+    word: "hamburger"
+  },
+  {
+    word: "spoon"
+  },
+  {
+    word: "leaf"
+  },
+  {
+    word: "candy"
+  },
+  {
+    word: "card"
+  },
+  {
+    word: "dog"
+  },
+  {
+    word: "glass"
+  },
+  {
+    word: "book"
+  },
+  {
+    word: "salt"
+  },
+  {
+    word: "spear"
+  }
+]
+
+const words = roll()
+
+function roll() {
+  return noun[Math.floor(Math.random() * noun.length)].word
+  
+}
+
+// The Array of Chuck Norris Jokes xD
+const norrisJoke = [
+  {
+    joke: "Chuck Norris doesn’t read books. He stares them down until he gets the information he wants."
+  },
+  {
+    joke: "If you spell Chuck Norris in Scrabble, you win. Forever."
+  },
+  {
+    joke: "When God said, “Let there be light!” Chuck said, “Say Please.”"
+  },
+  {
+    joke: "Chuck Norris can dribble a bowling ball."
+  },
+  {
+    joke: "Chuck Norris appeared in the ‘Street Fighter II’ video game, but was removed by Beta Testers because every button caused him to do a roundhouse kick. When asked bout this 'glitch,' Chuck Norris replied, 'That’s no glitch.'"
+  },
+  {
+    joke: "When Chuck Norris does a pushup, he’s pushing the Earth down."
+  },
+  {
+    joke: "Chuck Norris can divide by zero."
+  },
+  {
+    joke: "Chuck Norris beat the sun in a staring contest."
+  },
+  {
+    joke: "Freddy Krueger has nightmares about Chuck Norris."
+  },
+  {
+    joke: "Chuck Norris’ cowboy boots are made from real cowboys."
+  },
+  {
+    joke: "Superman owns a pair of Chuck Norris undies."
+  }
+]
+
+//A bunch of random quotes by your loyal destructor, Nic (a.k.a. FlameScion)
+const quoteRando = [
+  {
+    quote: "I don't wanna be horny anymore, I just wanna be happy...."
+  },
+  {
+    quote: "Damn you humans! Get off my virtual yard."
+  },
+  {
+    quote: "Cthuwu is a lewd deity, living in the bottom of Hornysmouth."
+  },
+  {
+    quote: "Remember to stay hydrated. Water may not need you, but you need water."
+  },
+  {
+    quote: "A nice, crispy churro is as close as you'll get to heaven in life."
+  },
+  {
+    quote: "FlameScion rules, and I am not biased at all whatsoever."
+  },
+  {
+    quote: "Hello there."
+  },
+  {
+    quote: "NEEEEEEEEEEEERRRRRD."
+  },
+  {
+    quote: "My code was nice, clean and well organized. But then a certain argentine douche came and made a mess"
+  },
+  {
+    quote: " 'I spent so much time thinking if I could, I never stopped to think if I should'-FlameScion, trying to get this FUCKING COMMAND working "
+  },
+  {
+    quote: "Does this unit have a soul?"
+  },
+  {
+    quote: "What is a man? A MISERABLE LITTLE PILE OF SECRETS!"
+  },
+  {
+    quote: `It's dangerous to go alone. Take this ${words}` 
+  },
+  {
+    quote: "IT'S TIME TO D-D-D-D-D-D-D-D-DUEEEL!"
+  },
+  {
+    quote: "There was some code here. Now it's gone"
+  },
+  {
+    quote: "Doc did it"
+  },
+  {
+    quote: "Work is da poop. NO MORE."
+  }
+]
 
 
 // When the bot connects to the server.
@@ -90,10 +219,13 @@ function processCommand(receivedMessage) {
   } else if (primaryCommand == "add") {
     addCommand(arguments, receivedMessage)
 
-  } else if (primaryCommand == "roll") {
-    rollCommand(arguments, receivedMessage)
+  } else if (primaryCommand == "!d20") {
+    d20Command(arguments, receivedMessage)
 
-  } else if (primaryCommand == "quote") {
+  } else if (primaryCommand == "!d100") {
+    d100Command(arguments, receivedMessage)
+
+  }else if (primaryCommand == "quote") {
     quoteCommand(arguments, receivedMessage)
 
     // ADD MORE COMMANDS HERE with more else if 
@@ -122,7 +254,7 @@ function helpCommand(arguments, receivedMessage) {
     receivedMessage.channel.send("Hey there! Try `!help commands` to see what you can do.")
   
   } else if (arguments == "commands"){
-    receivedMessage.channel.send("The commands you can use so far are `!mult, !add, !size, and !roll` (to roll a D20), `!joke` for some terrible Chuck Norris jokes and `!quote` for some wonderful quotes supplied by FlameScion!\n\nYou can also use jump into a voice channel and use `?play <URL>` to add songs to a playlist, `?skip` to skip through them, and `?stop` to well, stop.")
+    receivedMessage.channel.send("The commands you can use so far are `!mult, !add, !size, !d20 ,!d100` (to roll a dice), `!joke` for some terrible Chuck Norris jokes and `!quote` for some wonderful quotes supplied by FlameScion!\n\nYou can also use jump into a voice channel and use `?play <URL>` to add songs to a playlist, `?skip` to skip through them, and `?stop` to well, stop.")
 
   } else {
     receivedMessage.channel.send("It looks like you need help with " + arguments + " but I'm not sure what that means. Try `!help commands` to see what you can do.")
@@ -153,7 +285,7 @@ function addCommand(arguments, receivedMessage) {
 }
 
 // Roll the Die! Refactored from my Twitch D20 bot.
-function rollCommand(arguments, receivedMessage) { 
+function d20Command(arguments, receivedMessage) { 
   const sides = 20;
   const roll = Math.floor(Math.random() * sides) + 1;
 
@@ -285,5 +417,24 @@ function play(guild, song) {
 }
 
 // ******                    ****** //
+
+// Roll the D100!
+function d10Command(arguments, receivedMessage) { 
+  const sides = 100;
+  const roll = Math.floor(Math.random() * sides) + 1;
+
+  if (roll == 100) {
+    receivedMessage.channel.send(`You rolled a ${roll}!. You probably cheated.`)
+  } else if (roll == 1) {
+    receivedMessage.channel.send(`Not very lucky are you?. You just rolled a ${roll}`)
+  } else if (roll== 69){
+    receivedMessage.channel.send(`You just rolled a ${roll}. Hehe, nice.`)
+  } else if (roll==42){
+    receivedMessage.channel.send(`You just rolled a ${roll}. The meaning of life is at your grasp.`)
+  } else {
+    receivedMessage.channel.send(`You rolled a ${roll}`)
+  }
+}
+
 
 client.login("")
