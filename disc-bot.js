@@ -9,6 +9,8 @@ const quoteCommand = require('./commands/quotes')
 const sizeCommand = require('./commands/size')
 const multCommand = require('./commands/mult')
 const addCommand = require('./commands/add')
+const rollCommand = require('./commands/dice')
+const execute = require('./commands/execute')
 
 // Music Player listener prefix
 const prefix = "?"
@@ -111,22 +113,6 @@ function processCommand(receivedMessage) {
   }
 }
 
-// Roll the Die! Refactored from my Twitch D20 bot.
-function rollCommand(arguments, receivedMessage) { 
-  const sides = 20;
-  const roll = Math.floor(Math.random() * sides) + 1;
-
-  if (roll == 20) {
-    receivedMessage.channel.send(`DAMN SON!, You rolled a ${roll}!`)
-  } else if (roll == 1) {
-    receivedMessage.channel.send(`HA!, Sucker. You just rolled a ${roll}`)
-  } else if (roll== 5){
-    receivedMessage.channel.send(`You just rolled a ${roll}. Doc disliked that....`)
-  }else {
-    receivedMessage.channel.send(`You rolled a ${roll}`)
-  }
-}
-
 // ****** The Music Player!! ****** //
 
 client.on("message", async message => {
@@ -149,56 +135,6 @@ client.on("message", async message => {
   }
 });
 
-async function execute(message, serverQueue) {
-  const args = message.content.split(" ");
-
-  const voiceChannel = message.member.voice.channel;
-  if (!voiceChannel)
-    return message.channel.send(
-      "You need to be in a voice channel to play music!"
-    );
-  const permissions = voiceChannel.permissionsFor(message.client.user);
-  if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
-    return message.channel.send(
-      "I need the permissions to join and speak in your voice channel!"
-    );
-  }
-
-  const songInfo = await ytdl.getInfo(args[1]);
-  const song = {
-    title: songInfo.videoDetails.title,
-    url: songInfo.videoDetails.video_url
-  };
-
-  if (!serverQueue) {
-    const queueContruct = {
-      textChannel: message.channel,
-      voiceChannel: voiceChannel,
-      connection: null,
-      songs: [],
-      volume: 5,
-      playing: true
-    };
-
-    queue.set(message.guild.id, queueContruct);
-
-    queueContruct.songs.push(song);
-
-    try {
-      var connection = await voiceChannel.join();
-      queueContruct.connection = connection;
-      play(message.guild, queueContruct.songs[0]);
-    } catch (err) {
-      console.log(err);
-      queue.delete(message.guild.id);
-      return message.channel.send(err);
-    }
-  } else {
-    serverQueue.songs.push(song);
-    return message.channel.send(`${song.title} has been added to the queue!`);
-  }
-}
-
 function skip(message, serverQueue) {
   if (!message.member.voice.channel)
     return message.channel.send(
@@ -216,26 +152,6 @@ function stop(message, serverQueue) {
     );
   serverQueue.songs = [];
   serverQueue.connection.dispatcher.end();
-}
-
-function play(guild, song) {
-  const serverQueue = queue.get(guild.id);
-  if (!song) {
-    serverQueue.voiceChannel.leave();
-    queue.delete(guild.id);
-    return;
-  }
-
-  const dispatcher = serverQueue.connection
-    .play(ytdl(song.url))
-    .on("finish", () => {
-      serverQueue.songs.shift();
-      play(guild, serverQueue.songs[0]);
-    })
-    .on("error", error => console.error(error));
-  dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-  serverQueue.textChannel.send(`Start playing: **${song.title}**`);
-  console.log(song.title)
 }
 
 // ******                    ****** //
