@@ -7,7 +7,7 @@ This chatbot has been whipped together based on a tutorial shown on YouTube, a f
 - Random Quotes
 - Terrible Chuck Norris Jokes
 - D20 Die Roller
-- Add and Multiply
+- Simple Add and Multiply
 - And the Music Player!
 
 ## To-Do List
@@ -21,6 +21,7 @@ This chatbot has been whipped together based on a tutorial shown on YouTube, a f
 - [ ] Banhammer for naughty words lol!
 - [ ] Shameless plugger for Des/mine work
 - [ ] Simple chat AI?
+- [ ] Break commands into modules
 
 ---
 
