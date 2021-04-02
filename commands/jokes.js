@@ -35,4 +35,9 @@
   }
 ]
 
-module.exports = norrisJoke
+// The Chuck Norris Joke maker!
+function jokeCommand(arguments, receivedMessage) {
+  receivedMessage.channel.send(`${norrisJoke[Math.floor(Math.random() * norrisJoke.length)].joke}`)
+}
+
+module.exports = jokeCommand

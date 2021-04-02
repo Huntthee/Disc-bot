@@ -1,15 +1,23 @@
+// Some core modules
 const Discord = require('discord.js')
 const ytdl = require("ytdl-core")
-const norrisJoke = require('./commands/jokes')
-const quoteRando = require('./commands/quotes')
+
+// Require all the commands
+const helpCommand = require('./commands/help')
+const jokeCommand = require('./commands/jokes')
+const quoteCommand = require('./commands/quotes')
+const sizeCommand = require('./commands/size')
+const multCommand = require('./commands/mult')
+const addCommand = require('./commands/add')
+
+// Music Player listener prefix
 const prefix = "?"
 
-const client = new Discord.Client()
-
+// Allow for the creation of a music queue
 const queue = new Map()
 
-// List of random nouns hehe
-
+// Hook up to the server as a user
+const client = new Discord.Client()
 
 // When the bot connects to the server.
 client.on('ready', () => {
@@ -103,55 +111,6 @@ function processCommand(receivedMessage) {
   }
 }
 
-// The good ol math command, just multiplies atm. no calculator or anything.
-function multCommand(arguments, receivedMessage) {
-  if (arguments.length < 2) {
-    receivedMessage.channel.send("Not enough maths! Try `!mult 2 2`")
-    return
-  }
-  let product = 1
-  arguments.forEach((value) => {
-    product = product * parseFloat(value)
-  })
-  receivedMessage.channel.send("And the total of " + arguments + " is! " + product.toString())
-}
-
-// Basic help command! nothing attached to it right now. 
-function helpCommand(arguments, receivedMessage) {
-  if (arguments.length == 0) {
-    receivedMessage.channel.send("Hey there! Try `!help commands` to see what you can do.")
-  
-  } else if (arguments == "commands"){
-    receivedMessage.channel.send("The commands you can use so far are `!mult, !add, !size, and !roll` (to roll a D20), `!joke` for some terrible Chuck Norris jokes and `!quote` for some wonderful quotes supplied by FlameScion!\n\nYou can also use jump into a voice channel and use `?play <URL>` to add songs to a playlist, `?skip` to skip through them, and `?stop` to well, stop.")
-
-  } else {
-    receivedMessage.channel.send("It looks like you need help with " + arguments + " but I'm not sure what that means. Try `!help commands` to see what you can do.")
-  }
-}
-
-// Deserts' reminder for twitch panel sizes
-function sizeCommand(arguments, receivedMessage) {
-  receivedMessage.channel.send("Twitch Panels are 320 x 160 pixels!")
-}
-
-// The Chuck Norris Joke maker!
-function jokeCommand(arguments, receivedMessage) {
-  receivedMessage.channel.send(`${norrisJoke[Math.floor(Math.random() * norrisJoke.length)].joke}`)
-}
-
-// The Adding command!
-function addCommand(arguments, receivedMessage) {
-  if (arguments.length < 2) {
-    receivedMessage.channel.send("Not enough maths! Try `!add 2 2`")
-    return
-  }
-  let product = 0
-  arguments.forEach((value) => {
-    product = product + parseFloat(value)
-  })
-  receivedMessage.channel.send(arguments + " = " + product.toString())
-}
-
 // Roll the Die! Refactored from my Twitch D20 bot.
 function rollCommand(arguments, receivedMessage) { 
   const sides = 20;
@@ -166,11 +125,6 @@ function rollCommand(arguments, receivedMessage) {
   }else {
     receivedMessage.channel.send(`You rolled a ${roll}`)
   }
-}
-
-// Flames' extremely volatile quote
-function quoteCommand(arguments, recievedMessage){
-  recievedMessage.channel.send(`${quoteRando[Math.floor(Math.random() * quoteRando.length)].quote}`)
 }
 
 // ****** The Music Player!! ****** //
