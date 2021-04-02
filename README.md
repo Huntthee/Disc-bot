@@ -17,11 +17,11 @@ This chatbot has been whipped together based on a tutorial shown on YouTube, a f
 - [x] Random Quotes
 - [x] Music Player
 - [ ] Mention Replies
-- [ ] D100 Die Roller
+- [x] D100 Die Roller
 - [ ] Banhammer for naughty words lol!
 - [ ] Shameless plugger for Des/mine work
 - [ ] Simple chat AI?
-- [ ] Break commands into modules
+- [x] Break commands into modules
 
 ---
 

@@ -9,8 +9,8 @@ const quoteCommand = require('./commands/quotes')
 const sizeCommand = require('./commands/size')
 const multCommand = require('./commands/mult')
 const addCommand = require('./commands/add')
-const roll20Command = require('./commands/dice')
-const roll100Command = require('./commands/dice')
+const roll20Command = require('./commands/20die')
+const roll100Command = require('./commands/100die')
 
 // Music Player listener prefix
 const prefix = "?"
