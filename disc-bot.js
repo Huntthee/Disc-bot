@@ -1,81 +1,62 @@
 // Some core modules
 const Discord = require('discord.js')
-const ytdl = require("ytdl-core")
 
 // Require all the ! commands
 const helpCommand = require('./commands/help')
 const jokeCommand = require('./commands/jokes')
 const quoteCommand = require('./commands/quotes')
-const sizeCommand = require('./commands/size')
 const multCommand = require('./commands/mult')
 const addCommand = require('./commands/add')
 const roll20Command = require('./commands/20die')
 const roll100Command = require('./commands/100die')
-
-// Music Player listener prefix
-const prefix = "?"
-
-// Allow for the creation of a music queue
-const queue = new Map()
+const stop = require('./commands/stop')
+const skip = require('./commands/skip')
+const execute = require('./commands/play')
+const config = require('./config.json')
 
 // Hook up to the server as a user
 const client = new Discord.Client()
 
+const queue = new Map()
+
 // When the bot connects to the server.
 client.on('ready', () => {
   console.log("Connected as " + client.user.tag)
-  // set its activity. Will currently see as "Playing God"
-  client.user.setActivity("God")
+  // set its activity. Will currently see as "Little Helper, try ?help"
+  client.user.setActivity("Little Helper, try ?help")
 
   // Drop a list of the channels in console.
   client.guilds.cache.forEach((guild) => {
-    console.log(guild.name)
+    console.log(guild.name, guild.id)
     guild.channels.cache.forEach((channel) => {
       console.log(` - ${channel.name} ${channel.type} ${channel.id}`)
     })
-    // Coding Text Channel ID: 782832103913029672
   })
-
-  // Join whichever channel you want your bot in.
-  let generalChannel = client.channels.cache.get("782832103913029672")
-  const attachment = new Discord.MessageAttachment("assets/truth.png")
-  // generalChannel.send(attachment)
-  // generalChannel.send("Im a real boy!")
-
 })
 
 /* This block will return messages/images/emotes anytime a message is detected in channel.
-Leave it on to detect ! commands from the users */
-client.on('message', (receivedMessage) => {
+Leave it on to detect the set prefix for commands from the users */
+client.on('message', async receivedMessage => {
   if (receivedMessage.author == client.user) {
     return
   }
-
-  // Parrot every post made in the channel, bad idea.
-
-  // receivedMessage.channel.send("Message received, " + receivedMessage.author.toString() + ": " + receivedMessage.content)
-
-  // Post an emoji every time someone posts.. also bad idea.
-
-  //receivedMessage.react("")
-
-  // Get a list of the custom emoji ids!
-
-  /* receivedMessage.guild.emojis.cache.forEach(customEmoji => {
-    console.log(`${customEmoji.name} ${customEmoji.id}`)
-  }) */
-
-  // Slap a custom reaction emote on every post.
-
-  // let customEmoji = receivedMessage.guild.emojis.cache.get("754432775414611969")
-  // receivedMessage.react(customEmoji)
-
-  if (receivedMessage.content.startsWith("!")) {
+  if (receivedMessage.content.startsWith(config.prefix)) {
     processCommand(receivedMessage)
   }
 })
 
-// Set up the structure for building chat commands and assigning the !word
+// The Greeter
+client.on('guildMemberAdd', async member => {
+  if (member.guild.id !== "748276590089076886") return
+
+  var channel = client.channels.cache.get('748276590089076889')
+
+  channel.send(`Hey there <@!${member.id}>! Welcome to my Discord server!`)
+  
+  console.log(`Member ID: ${member.id}, Member: ${member}`)
+})
+
+// Set up the structure for building chat commands and assigning commands to the prefix
 function processCommand(receivedMessage) {
   let fullCommand = receivedMessage.content.substr(1)
   let splitCommand = fullCommand.split(" ")
@@ -103,131 +84,26 @@ function processCommand(receivedMessage) {
   } else if (primaryCommand == "d20") {
     roll20Command(arguments, receivedMessage)
 
-  } else if (primaryCommand == "d100"){
+  } else if (primaryCommand == "d100") {
     roll100Command(arguments, receivedMessage)
 
   } else if (primaryCommand == "quote") {
     quoteCommand(arguments, receivedMessage)
 
-    // ADD MORE COMMANDS HERE with more else if 
+  } else if (primaryCommand == "play") {
+    execute(receivedMessage, serverQueue)
+
+  } else if (primaryCommand == "skip") {
+    skip(receivedMessage, serverQueue)
+
+  } else if (primaryCommand == "stop") {
+    stop(receivedMessage, serverQueue)
+
+  // ADD MORE COMMANDS HERE with more else if 
 
   } else {
-    receivedMessage.channel.send("Unknown command. Try `!help`")
+    receivedMessage.reply("Hmm, that didn't seem to work. Try `?help` to get a list of commands.")
   }
 }
 
-// ****** The Music Player!! ****** //
-
-// Listen for commands starting with ? as defined by prefix
-client.on("message", async message => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  const serverQueue = queue.get(message.guild.id);
-
-  if (message.content.startsWith(`${prefix}play`)) {
-    execute(message, serverQueue);
-    return;
-  } else if (message.content.startsWith(`${prefix}skip`)) {
-    skip(message, serverQueue);
-    return;
-  } else if (message.content.startsWith(`${prefix}stop`)) {
-    stop(message, serverQueue);
-    return;
-  } else {
-    message.channel.send("You need to enter a valid command!");
-  }
-});
-
-async function execute(message, serverQueue) {
-  const args = message.content.split(" ");
-
-  const voiceChannel = message.member.voice.channel;
-  if (!voiceChannel)
-    return message.channel.send(
-      "You need to be in a voice channel to play music!"
-    );
-  const permissions = voiceChannel.permissionsFor(message.client.user);
-  if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
-    return message.channel.send(
-      "I need the permissions to join and speak in your voice channel!"
-    );
-  }
-
-  const songInfo = await ytdl.getInfo(args[1]);
-  const song = {
-    title: songInfo.videoDetails.title,
-    url: songInfo.videoDetails.video_url
-  };
-
-  if (!serverQueue) {
-    const queueContruct = {
-      textChannel: message.channel,
-      voiceChannel: voiceChannel,
-      connection: null,
-      songs: [],
-      volume: 5,
-      playing: true
-    };
-
-    queue.set(message.guild.id, queueContruct);
-
-    queueContruct.songs.push(song);
-
-    try {
-      var connection = await voiceChannel.join();
-      queueContruct.connection = connection;
-      play(message.guild, queueContruct.songs[0]);
-    } catch (err) {
-      console.log(err);
-      queue.delete(message.guild.id);
-      return message.channel.send(err);
-    }
-  } else {
-    serverQueue.songs.push(song);
-    return message.channel.send(`${song.title} has been added to the queue!`);
-  }
-}
-
-function play(guild, song) {
-  const serverQueue = queue.get(guild.id);
-  if (!song) {
-    serverQueue.voiceChannel.leave();
-    queue.delete(guild.id);
-    return;
-  }
-
-  const dispatcher = serverQueue.connection
-    .play(ytdl(song.url))
-    .on("finish", () => {
-      serverQueue.songs.shift();
-      play(guild, serverQueue.songs[0]);
-    })
-    .on("error", error => console.error(error));
-  dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-  serverQueue.textChannel.send(`Start playing: **${song.title}**`);
-  console.log(song.title)
-}
-
-function skip(message, serverQueue) {
-  if (!message.member.voice.channel)
-    return message.channel.send(
-      "You have to be in a voice channel to stop the music!"
-    );
-  if (!serverQueue)
-    return message.channel.send("There is no song that I could skip!");
-  serverQueue.connection.dispatcher.end();
-}
-
-function stop(message, serverQueue) {
-  if (!message.member.voice.channel)
-    return message.channel.send(
-      "You have to be in a voice channel to stop the music!"
-    );
-  serverQueue.songs = [];
-  serverQueue.connection.dispatcher.end();
-}
-
-// ******                    ****** //
-
-client.login("")
+client.login(config.token)

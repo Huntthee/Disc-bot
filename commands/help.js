@@ -1,14 +1,67 @@
+const Discord = require("discord.js")
+
 // Basic help command! nothing attached to it right now. 
 function helpCommand(arguments, receivedMessage) {
-  if (arguments.length == 0) {
-    receivedMessage.channel.send("Hey there! Try `!help commands` to see what you can do.")
-  
-  } else if (arguments == "commands"){
-    receivedMessage.channel.send("The commands you can use so far are `!mult, !add, !size, and !d20` (to roll a D20) or `!d100` (for 1-100!)\n\n Are you brave enough to try `!joke` for some terrible Chuck Norris jokes? or `!quote` for some wonderful quotes supplied by FlameScion!\n\nYou can also use jump into a voice channel and use `?play <URL>` to add songs to a playlist, `?skip` to skip through them, and `?stop` to well, stop.")
+  const helpEmbed = new Discord.MessageEmbed()
+  .setColor('#ffd703')
+  .setAuthor('Rob Otto', 'https://i.imgur.com/RmxTBoQ.png', 'https://github.com/Huntthee/')
+  .setThumbnail('https://i.imgur.com/hjKUSlD.png')
 
+	.setTitle('Check out the base code here!')
+	.setURL('https://github.com/Huntthee/Disc-bot/')
+	.setDescription('A helpful little bot capable of all sorts of tricks! Discord and Rental site to come, Keep an eye out for updates!')
+
+	.addFields(
+    {
+      name: 'The Music Player',
+      value: 'Hop into a Voice channel and create a playlist from Youtube or Vimeo videos!'
+    },
+    {
+      name: '?play <URL>',
+      value: 'Will add songs to your queue, add as many as you\'d like!'
+    },
+    {
+      name: '?skip',
+      value: 'Will skip the currently playing song'
+    },
+    {
+      name: '?stop',
+      value: 'Will end the current playlist and boot the bot from the voice channel'
+    },
+    {
+      name: 'Other Commands Available',
+      value: '---'
+    },
+    {
+      name: '?d20 and ?d100',
+      value: 'Roll the dice and test your luck!'
+    },
+    {
+      name: '?joke',
+      value: 'To get some terrible Chuck Norris jokes'
+    },
+    {
+      name: '?quote',
+      value: 'For some wonderful quotes supplied by contributor FlameScion'
+    },
+    {
+      name: '?mult and ?add',
+      value: 'To Multiply or Add two numbers'
+    }
+  )
+	// .setImage('https://i.imgur.com/wSTFkRM.png')
+	
+	.setFooter('And more to come!', 'https://i.imgur.com/RmxTBoQ.png')
+  .setTimestamp();
+
+  if (arguments.length == 0) {
+    receivedMessage.channel.send(helpEmbed)
+      
   } else {
-    receivedMessage.channel.send("It looks like you need help with " + arguments + " but I'm not sure what that means. Try `!help commands` to see what you can do.")
+    receivedMessage.channel.send("It looks like you need help with " + arguments + " but I'm not sure what that means. Try `?help` to see what you can do.")
   }
 }
+
+
 
 module.exports = helpCommand
