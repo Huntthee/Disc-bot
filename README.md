@@ -4,6 +4,8 @@
 >**April 9th Update**
 This Discord bot is now to be the focus of my final presentation for SAIT's WBDV shotgun course, and the first of many bots to come.
 
+[Invite the bot to your Discord server!](https://discord.com/api/oauth2/authorize?client_id=822664873347121162&permissions=8&scope=bot)
+
 Plans are to create this and other bots for Twitter, Twitch, Instagram etc which can do anything from entertain/moderate users, to trawling databases and extracting the desired information.
 
 In the beginning, this chatbot has been whipped together based on a tutorial shown on YouTube, a few other bot building tutorials, some of my own general JS knowhow and some silly ideas for what I wanted my bot to be able to do.

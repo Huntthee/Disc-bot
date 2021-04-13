@@ -50,10 +50,11 @@ const quoteRando = [
   }
 ]
 
+
+
 // Flames' extremely volatile quote
 function quoteCommand(arguments, recievedMessage){
   recievedMessage.channel.send(`${quoteRando[Math.floor(Math.random() * quoteRando.length)].quote}`)
 }
-
 
 module.exports = quoteCommand
