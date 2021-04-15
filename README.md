@@ -22,7 +22,8 @@ As of April 8th, this bot is hosted on Heroku and now live.
 | 04/08/21 | True Power, The Bot is hosted on Heroku |
 | 04/09/21 | Created fancy embed for ?help command |
 | 04/10/21 | Sucessfully merged Music player code with my own, split functions into modules |
-| 04/11/21 | Next big move will be to retrieve commands dynamically |
+| 04/12/21 | Twitter bot created to retweet #Discord and start funneling users to my bots |
+| 04/13/21 | Shopify site setup to offer free/premium bots |
 
 ---- 
 
@@ -35,13 +36,13 @@ As of April 8th, this bot is hosted on Heroku and now live.
 - [x] Break commands into modules
 - [x] Simple greeter functionality
 - [x] D100 Die Roller
-- [ ] Accompanying Twitter bot to auto-advertise
-- [ ] Client-facing rental site
+- [x] Accompanying Twitter bot to auto-advertise
+- [x] Client-facing rental site
 - [ ] Remember user birthdays and congratulate
 - [ ] SUS %
 - [ ] PokeBall for catching users, 1% chance.
 - [ ] Search capabilities, google etc.
-- [ ] Mention Replies
+- [x] Mention Replies
 - [ ] Trivia!
 - [ ] Currency/Levels earned for chatting
 - [ ] Reward system/store for chat points
