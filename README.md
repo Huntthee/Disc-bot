@@ -24,6 +24,7 @@ As of April 8th, this bot is hosted on Heroku and now live.
 | 04/10/21 | Sucessfully merged Music player code with my own, split functions into modules |
 | 04/12/21 | Twitter bot created to retweet #Discord and start funneling users to my bots |
 | 04/13/21 | Shopify site setup to offer free/premium bots |
+| 04/15/21 | Great progress on refactoring dynamic command retrieval! Music Player needs to be reconfigured |
 
 ---- 
 
@@ -57,6 +58,7 @@ As of April 8th, this bot is hosted on Heroku and now live.
 
 ## Attributions
 - FlameScion for adding quotes, putting good work into refactoring the dice commands and helping me test them out!
+- [The Discord.js Guide](https://discordjs.guide) has been incredibly useful in helping set up dynamic commands.
 - And of course [Stackoverflow](https://stackoverflow.com/) for all those tricky bits
 - [This freeCodeCamp tutorial](https://www.freecodecamp.org/news/how-to-create-a-music-bot-using-discord-js-4436f5f3f0f8/) for our music features.
 - [This Video from Codecamp on YouTube](https://www.youtube.com/watch?v=8o25pRbXdFw) Helped me get the basic code structure down which I have since been able to build off of.
