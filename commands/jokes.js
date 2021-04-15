@@ -1,5 +1,14 @@
  // The Array of Chuck Norris Jokes xD
- norrisJoke = [
+ // Soon to be replaced with the Chuck Norris API!
+ module.exports = {
+   name: "joke",
+   description: "Some terrible chuck norris jokes",
+   execute(message) {
+  message.channel.send(`${norrisJoke[Math.floor(Math.random() * norrisJoke.length)].joke}`)
+  }
+}
+
+const norrisJoke = [
   {
     joke: "Chuck Norris doesn’t read books. He stares them down until he gets the information he wants."
   },
@@ -34,10 +43,3 @@
     joke: "Superman owns a pair of Chuck Norris undies."
   }
 ]
-
-// The Chuck Norris Joke maker!
-function jokeCommand(arguments, receivedMessage) {
-  receivedMessage.channel.send(`${norrisJoke[Math.floor(Math.random() * norrisJoke.length)].joke}`)
-}
-
-module.exports = jokeCommand

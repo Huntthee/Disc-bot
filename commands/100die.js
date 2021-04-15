@@ -1,19 +1,21 @@
 // Roll the D100!
-function roll100Command(arguments, receivedMessage) { 
-  const sides = 100;
-  const roll = Math.floor(Math.random() * sides) + 1;
+module.exports = {
+  name: "d100",
+  description: "Roll 1-100!",
+  execute(message) { 
+    const sides = 100;
+    const roll = Math.floor(Math.random() * sides) + 1;
 
-  if (roll == 100) {
-    receivedMessage.channel.send(`You rolled a ${roll}!. You probably cheated.`)
-  } else if (roll == 1) {
-    receivedMessage.channel.send(`Not very lucky are you?. You just rolled a ${roll}`)
-  } else if (roll== 69){
-    receivedMessage.channel.send(`You just rolled a ${roll}. Hehe, nice.`)
-  } else if (roll==42){
-    receivedMessage.channel.send(`You just rolled a ${roll}. The meaning of life is at your grasp.`)
-  } else {
-    receivedMessage.channel.send(`You rolled a ${roll}`)
+    if (roll == 100) {
+      message.channel.send(`You rolled a ${roll}!. You probably cheated.`)
+    } else if (roll == 1) {
+      message.channel.send(`Not very lucky are you?. You just rolled a ${roll}`)
+    } else if (roll== 69){
+      message.channel.send(`${roll} Nice.`)
+    } else if (roll==42){
+      message.channel.send(`You just rolled a ${roll}. The meaning of life is at your grasp.`)
+    } else {
+      message.channel.send(`You rolled a ${roll}`)
+    }
   }
 }
-
-module.exports = roll100Command

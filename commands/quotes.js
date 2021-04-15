@@ -1,3 +1,12 @@
+// Flames' extremely volatile quote
+module.exports = {
+  name: "quote",
+  description: "A list of random quotes!",
+  execute(message){
+    message.channel.send(`${quoteRando[Math.floor(Math.random() * quoteRando.length)].quote}`)
+  }
+}
+
 //A bunch of random quotes by your loyal destructor, Nic (a.k.a. FlameScion)
 const quoteRando = [
   {
@@ -49,12 +58,3 @@ const quoteRando = [
     quote: "Doc did it"
   }
 ]
-
-
-
-// Flames' extremely volatile quote
-function quoteCommand(arguments, recievedMessage){
-  recievedMessage.channel.send(`${quoteRando[Math.floor(Math.random() * quoteRando.length)].quote}`)
-}
-
-module.exports = quoteCommand

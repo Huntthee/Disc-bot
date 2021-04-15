@@ -25,6 +25,7 @@
     "ffmpeg": "0.0.4",
     "ffmpeg-static": "^4.2.8",
     "fluent-ffmpeg": "^2.1.2",
+    "fs": "0.0.1-security",
     "heroku": "^7.52.0",
     "unirest": "^0.6.0",
     "ytdl-core": "^4.5.0"

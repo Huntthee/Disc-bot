@@ -1,14 +1,16 @@
 // The Adding command!
-function addCommand(arguments, receivedMessage) {
-  if (arguments.length < 2) {
-    receivedMessage.channel.send("Not enough maths! Try `!add 2 2`")
-    return
+module.exports = {
+  name: "add",
+  desription: "simple adding function",
+  execute(message, args) {
+    if (args.length < 2) {
+      message.channel.send("Not enough maths! Try `!add 2 2`")
+      return
+    }
+    let product = 0
+    args.forEach((value) => {
+      product = product + parseFloat(value)
+    })
+    message.channel.send(args + " = " + product.toString())
   }
-  let product = 0
-  arguments.forEach((value) => {
-    product = product + parseFloat(value)
-  })
-  receivedMessage.channel.send(arguments + " = " + product.toString())
 }
-
-module.exports = addCommand

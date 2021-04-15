@@ -1,23 +1,26 @@
 // Some core modules
 const Discord = require('discord.js')
+const fs = require('fs');
 
-// Require all the ! commands
-const helpCommand = require('./commands/help')
-const jokeCommand = require('./commands/jokes')
-const quoteCommand = require('./commands/quotes')
-const multCommand = require('./commands/mult')
-const addCommand = require('./commands/add')
-const roll20Command = require('./commands/20die')
-const roll100Command = require('./commands/100die')
-const stop = require('./commands/stop')
-const skip = require('./commands/skip')
-const execute = require('./commands/play')
-const config = require('./config.json')
+// Configurations
+const { prefix, token } = require('./config.json')
 
 // Hook up to the server as a user
 const client = new Discord.Client()
+client.commands = new Discord.Collection()
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+
+	// set a new item in the Collection
+	// with the key as the command name and the value as the exported module
+	client.commands.set(command.name, command);
+}
 
 const queue = new Map()
+
 
 // When the bot connects to the server.
 client.on('ready', () => {
@@ -34,14 +37,28 @@ client.on('ready', () => {
   })
 })
 
-/* This block will return messages/images/emotes anytime a message is detected in channel.
-Leave it on to detect the set prefix for commands from the users */
-client.on('message', async receivedMessage => {
-  if (receivedMessage.author == client.user) {
-    return
+
+// This code block will sort through messages listening for comments starting with the set prefix, then filter through the commands directory and match the term
+client.on('message', async message => {
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+  const args = message.content.slice(prefix.length).trim().split(/ +/);
+  const commandName = args.shift().toLowerCase();
+  const serverQueue = queue.get(message.guild.id);
+
+  if (!client.commands.has(commandName)) return;
+
+  const command = client.commands.get(commandName);
+  
+  if (command.args && !args.length) {
+    return message.channel.reply(`You didn't provide any arguments`)
   }
-  if (receivedMessage.content.startsWith(config.prefix)) {
-    processCommand(receivedMessage)
+
+  try {
+    command.execute(message, args)
+  } catch (error) {
+    console.error(error);
+    message.reply('there was an error trying to execute that command!');
   }
 })
 
@@ -49,61 +66,11 @@ client.on('message', async receivedMessage => {
 client.on('guildMemberAdd', async member => {
   if (member.guild.id !== "748276590089076886") return
 
-  var channel = client.channels.cache.get('748276590089076889')
+  let channel = client.channels.cache.get('748276590089076889')
 
-  channel.send(`Hey there <@!${member.id}>! Welcome to my Discord server!`)
+  channel.send(`Hey there <@!${member.id}>! Welcome to the Discord server!`)
   
   console.log(`Member ID: ${member.id}, Member: ${member}`)
 })
 
-// Set up the structure for building chat commands and assigning commands to the prefix
-function processCommand(receivedMessage) {
-  let fullCommand = receivedMessage.content.substr(1)
-  let splitCommand = fullCommand.split(" ")
-  let primaryCommand = splitCommand[0]
-  let arguments = splitCommand.slice(1)
-
-  const serverQueue = queue.get(receivedMessage.guild.id);
-
-  // The list of Commands grows!
-  if (primaryCommand == "help") {
-    helpCommand(arguments, receivedMessage)
-
-  } else if (primaryCommand == "mult") {
-    multCommand(arguments, receivedMessage)
-
-  } else if (primaryCommand == "size") {
-    sizeCommand(arguments, receivedMessage)
-
-  } else if (primaryCommand == "joke") {
-    jokeCommand(arguments, receivedMessage)
-
-  } else if (primaryCommand == "add") {
-    addCommand(arguments, receivedMessage)
-
-  } else if (primaryCommand == "d20") {
-    roll20Command(arguments, receivedMessage)
-
-  } else if (primaryCommand == "d100") {
-    roll100Command(arguments, receivedMessage)
-
-  } else if (primaryCommand == "quote") {
-    quoteCommand(arguments, receivedMessage)
-
-  } else if (primaryCommand == "play") {
-    execute(receivedMessage, serverQueue)
-
-  } else if (primaryCommand == "skip") {
-    skip(receivedMessage, serverQueue)
-
-  } else if (primaryCommand == "stop") {
-    stop(receivedMessage, serverQueue)
-
-  // ADD MORE COMMANDS HERE with more else if 
-
-  } else {
-    receivedMessage.reply("Hmm, that didn't seem to work. Try `?help` to get a list of commands.")
-  }
-}
-
-client.login(config.token)
+client.login(token)
