@@ -1,7 +1,7 @@
-# A Custom Discord Chat-bot
+# A Custom Discord Chat-bot :robot:
 **by Mike Allison &copy; 2021**
 
->**April 9th Update**
+>**April 9th Update** :scroll:
 This Discord bot is now to be the focus of my final presentation for SAIT's WBDV shotgun course, and the first of many bots to come.
 
 [Invite the bot to your Discord server!](https://discord.com/api/oauth2/authorize?client_id=822664873347121162&permissions=8&scope=bot)
@@ -17,14 +17,14 @@ As of April 8th, this bot is hosted on Heroku and now live.
 ## Progress Roadmap
 | Date | Project |
 | ---- | ------- |
-| 03/14/21 | The Bot is Born |
-| 03/15-04/01/20| Addition of numerous commands |
-| 04/08/21 | True Power, The Bot is hosted on Heroku |
-| 04/09/21 | Created fancy embed for ?help command |
-| 04/10/21 | Sucessfully merged Music player code with my own, split functions into modules |
-| 04/12/21 | Twitter bot created to retweet #Discord and start funneling users to my bots |
-| 04/13/21 | Shopify site setup to offer free/premium bots |
-| 04/15/21 | Great progress on refactoring dynamic command retrieval! Music Player needs to be reconfigured |
+| 03/14/21 | The Bot is Born :metal: |
+| 03/15-04/01/20| Addition of numerous commands :scroll: |
+| 04/08/21 | True Power, The Bot is hosted on Heroku :muscle: |
+| 04/09/21 | Created fancy embed for ?help command :question: |
+| 04/10/21 | Sucessfully merged Music player code with my own, split functions into modules :musical_note: |
+| 04/12/21 | Twitter bot created to retweet #Discord and start funneling users to my bots :bird: |
+| 04/13/21 | Shopify site setup to offer free/premium bots :robot: |
+| 04/15/21 | Great progress on refactoring dynamic command retrieval! Music Player needs to be reconfigured :sparkles: |
 
 ---- 
 

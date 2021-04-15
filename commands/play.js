@@ -1,6 +1,7 @@
 const ytdl = require("ytdl-core")
 
 const queue = new Map()
+const serverQueue = queue.get(message.guild.id);
 
 async function execute(message, serverQueue) {
   const args = message.content.split(" ");

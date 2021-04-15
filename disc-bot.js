@@ -44,7 +44,7 @@ client.on('message', async message => {
 
   const args = message.content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
-  const serverQueue = queue.get(message.guild.id);
+  
 
   if (!client.commands.has(commandName)) return;
 
