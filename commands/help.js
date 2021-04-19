@@ -1,8 +1,8 @@
 const Discord = require("discord.js")
 
 module.exports = {
-  name: "help",
-  description: "A helpful embed!",
+  name: 'help',
+  description: 'A helpful embed!',
   execute(message, args) {
     const helpEmbed = new Discord.MessageEmbed()
     .setColor('#ffd703')
@@ -14,26 +14,6 @@ module.exports = {
     .setDescription('A helpful little bot capable of all sorts of tricks! Discord and Rental site to come, Keep an eye out for updates!')
 
     .addFields(
-      {
-        name: 'The Music Player',
-        value: 'Hop into a Voice channel and create a playlist from Youtube or Vimeo videos!'
-      },
-      {
-        name: '?play <URL>',
-        value: 'Will add songs to your queue, add as many as you\'d like!'
-      },
-      {
-        name: '?skip',
-        value: 'Will skip the currently playing song'
-      },
-      {
-        name: '?stop',
-        value: 'Will end the current playlist and boot the bot from the voice channel'
-      },
-      {
-        name: 'Other Commands Available',
-        value: '---'
-      },
       {
         name: '?d20 and ?d100',
         value: 'Roll the dice and test your luck!'
@@ -49,6 +29,14 @@ module.exports = {
       {
         name: '?mult and ?add',
         value: 'To Multiply or Add two numbers'
+      },
+      {
+        name: '?prune',
+        value: 'To delete a set number of comments'
+      },
+      {
+        name: '?kick',
+        value: 'Mod capabilities coming soon!'
       }
     )
     // .setImage('https://i.imgur.com/wSTFkRM.png')
@@ -60,7 +48,7 @@ module.exports = {
       message.channel.send(helpEmbed)
         
     } else {
-      message.channel.send("It looks like you need help with " + args + " but I'm not sure what that means. Try `?help` to see what you can do.")
+      message.channel.send('It looks like you need help with ' + args + ' but I\'m not sure what that means. Try `?help` to see what you can do.')
     }
   }
 }

@@ -19,13 +19,11 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-const queue = new Map()
-
 
 // When the bot connects to the server.
 client.on('ready', () => {
   console.log("Connected as " + client.user.tag)
-  // set its activity. Will currently see as "Little Helper, try ?help"
+  // set its activity.
   client.user.setActivity("Little Helper, try ?help")
 
   // Drop a list of the channels in console.
@@ -42,13 +40,11 @@ client.on('ready', () => {
 client.on('message', async message => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-  const args = message.content.slice(prefix.length).trim().split(/ +/);
+  const args = message.content.slice(prefix.length).split(/ +/);
   const commandName = args.shift().toLowerCase();
-  
+  const command = client.commands.get(commandName);
 
   if (!client.commands.has(commandName)) return;
-
-  const command = client.commands.get(commandName);
   
   if (command.args && !args.length) {
     return message.channel.reply(`You didn't provide any arguments`)

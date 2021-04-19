@@ -63,5 +63,4 @@ As of April 8th, this bot is hosted on Heroku and now live.
 - [This freeCodeCamp tutorial](https://www.freecodecamp.org/news/how-to-create-a-music-bot-using-discord-js-4436f5f3f0f8/) for our music features.
 - [This Video from Codecamp on YouTube](https://www.youtube.com/watch?v=8o25pRbXdFw) Helped me get the basic code structure down which I have since been able to build off of.
 - [Heroku Dev Center](https://devcenter.heroku.com/) To figure out getting the bot hosted.
-- Numerous StackOverlow guides for quick fixes
 - And of course, Thank Google.
