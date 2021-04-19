@@ -25,6 +25,7 @@ As of April 8th, this bot is hosted on Heroku and now live.
 | 04/12/21 | Twitter bot created to retweet #Discord and start funneling users to my bots :bird: |
 | 04/13/21 | Shopify site setup to offer free/premium bots :robot: |
 | 04/15/21 | Great progress on refactoring dynamic command retrieval! Music Player needs to be reconfigured :sparkles: |
+| 04/19/21 | Integrated Chuck Norris and Random Quotes APIs for wider variety! :cowboy_hat_face: |
 
 ---- 
 
@@ -57,7 +58,10 @@ As of April 8th, this bot is hosted on Heroku and now live.
 
 
 ## Attributions
-- FlameScion for adding quotes, putting good work into refactoring the dice commands and helping me test them out!
+- Tony Grimes for getting the ball rolling! Would'nt know this much JS without a good boost.
+- FlameScion for the original quote array (now retired). As well as inspiration for refactoring the dice command (yet to be done).
+- [The Chuck Norris API](https://api.chucknorris.io/)
+- [Inspirational Quotes API](https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373)
 - [The Discord.js Guide](https://discordjs.guide) has been incredibly useful in helping set up dynamic commands.
 - And of course [Stackoverflow](https://stackoverflow.com/) for all those tricky bits
 - [This freeCodeCamp tutorial](https://www.freecodecamp.org/news/how-to-create-a-music-bot-using-discord-js-4436f5f3f0f8/) for our music features.
