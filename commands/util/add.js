@@ -2,6 +2,7 @@
 module.exports = {
   name: "add",
   desription: "simple adding function",
+  args: true,
   execute(message, args) {
     if (args.length < 2) {
       message.channel.send("Not enough maths! Try `!add 2 2`")
