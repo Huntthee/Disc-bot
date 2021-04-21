@@ -26,7 +26,7 @@ As of April 8th, this bot is hosted on Heroku and now live.
 | 04/13/21 | Shopify site setup to offer free/premium bots :robot: |
 | 04/15/21 | Great progress on refactoring dynamic command retrieval! Music Player needs to be reconfigured :sparkles: |
 | 04/19/21 | Integrated Chuck Norris and Random Quotes APIs for wider variety! :cowboy_hat_face: |
-
+| 04/21/21 | Moved event handlers into modules and worked commands into sub categories :beverage_box: |
 ---- 
 
 ## To-Do List
