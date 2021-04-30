@@ -27,6 +27,7 @@ As of April 8th, this bot is hosted on Heroku and now live.
 | 04/15/21 | Great progress on refactoring dynamic command retrieval! Music Player needs to be reconfigured :sparkles: |
 | 04/19/21 | Integrated Chuck Norris and Random Quotes APIs for wider variety! :cowboy_hat_face: |
 | 04/21/21 | Moved event handlers into modules and worked commands into sub categories :beverage_box: |
+| 04/30/21 | Repaired The Music Command! more work to come on stop/skip etc. :wrench: :musical_note: |
 ---- 
 
 ## To-Do List
@@ -67,4 +68,5 @@ As of April 8th, this bot is hosted on Heroku and now live.
 - [This freeCodeCamp tutorial](https://www.freecodecamp.org/news/how-to-create-a-music-bot-using-discord-js-4436f5f3f0f8/) for our music features.
 - [This Video from Codecamp on YouTube](https://www.youtube.com/watch?v=8o25pRbXdFw) Helped me get the basic code structure down which I have since been able to build off of.
 - [Heroku Dev Center](https://devcenter.heroku.com/) To figure out getting the bot hosted.
+- [This Youtube Video by codelyon](https://www.youtube.com/watch?v=riyHsgI2IDs) A more advanced music bot to implement for Rob Otto!
 - And of course, Thank Google.
