@@ -3,7 +3,7 @@ const Discord = require("discord.js")
 module.exports = {
   name: 'help',
   description: 'A helpful embed!',
-  execute(message, args) {
+  execute(client, message, args) {
     const helpEmbed = new Discord.MessageEmbed()
     .setColor('#ffd703')
     .setAuthor('Rob Otto', 'https://i.imgur.com/RmxTBoQ.png', 'https://github.com/Huntthee/')

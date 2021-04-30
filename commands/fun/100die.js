@@ -2,7 +2,7 @@
 module.exports = {
   name: "d100",
   description: "Roll 1-100!",
-  execute(message) { 
+  execute(client, message) { 
     const sides = 100;
     const roll = Math.floor(Math.random() * sides) + 1;
 

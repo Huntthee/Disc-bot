@@ -7,11 +7,14 @@ const { prefix, token } = require('./config.json');
 
 // Hook up to the server as a user
 const client = new Discord.Client();
+
 // Get event files
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
 // Get command folders/files
 client.commands = new Discord.Collection();
 const commandFolders = fs.readdirSync('./commands');
+
 
 // Sort through the event files and execute the required event
 for (const file of eventFiles) {
@@ -37,6 +40,7 @@ for (const folder of commandFolders) {
   };
 };
 
+
 // This code block will sort through messages listening for comments starting with the set prefix, then filter through the commands directory and match the term
 client.on('message', async message => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -52,11 +56,12 @@ client.on('message', async message => {
   }
 
   try {
-    command.execute(message, args)
+    command.execute(client, message, args, Discord, commandName)
   } catch (error) {
     console.error(error);
     message.reply('there was an error trying to execute that command!');
   }
 })
+
 
 client.login(token);

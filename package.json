@@ -28,6 +28,7 @@
     "fs": "^0.0.1-security",
     "heroku": "^7.52.0",
     "unirest": "^0.6.0",
+    "yt-search": "^2.8.0",
     "ytdl-core": "^4.5.0"
   },
   "engines": {

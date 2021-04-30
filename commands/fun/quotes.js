@@ -4,7 +4,7 @@ const fetch = require('node-fetch')
 module.exports = {
   name: "quote",
   description: "A list of random quotes!",
-  async execute(message){
+  async execute(client, message){
     fetch("https://type.fit/api/quotes")
   .then(function(response) {
     return response.json();

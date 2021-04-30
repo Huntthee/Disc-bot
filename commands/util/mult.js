@@ -2,7 +2,7 @@
 module.exports = {
   name: "mult",
   description: "multiply 2 numbers",
-  execute(message, args) {
+  execute(client, message, args) {
     if (args.length < 2) {
       message.channel.send("Not enough maths! Try `!mult 2 2`")
       return
