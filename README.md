@@ -28,6 +28,7 @@ As of April 8th, this bot is hosted on Heroku and now live.
 | 04/19/21 | Integrated Chuck Norris and Random Quotes APIs for wider variety! :cowboy_hat_face: |
 | 04/21/21 | Moved event handlers into modules and worked commands into sub categories :beverage_box: |
 | 04/30/21 | Repaired The Music Command! more work to come on stop/skip etc. :wrench: :musical_note: |
+| 08/11/21 | Added Skip/Stop commands to music capabilities :musical_note: |
 ---- 
 
 ## To-Do List
