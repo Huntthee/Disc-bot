@@ -29,6 +29,9 @@ As of April 8th, this bot is hosted on Heroku and now live.
 | 04/21/21 | Moved event handlers into modules and worked commands into sub categories :beverage_box: |
 | 04/30/21 | Repaired The Music Command! more work to come on stop/skip etc. :wrench: :musical_note: |
 | 08/11/21 | Added Skip/Stop commands to music capabilities :musical_note: |
+| 08/12/21 | Upgraded bot's moderation capabilities with Prune & Kick commands for Admin users. :hammer: |
+| 08/12/21 | Added more silly, entertainment commands such as sus% and pokeball :smile: |
+| 09/06/21 | Added a simple trivia game using opentdb :question: |
 ---- 
 
 ## To-Do List
@@ -43,15 +46,14 @@ As of April 8th, this bot is hosted on Heroku and now live.
 - [x] Accompanying Twitter bot to auto-advertise
 - [x] Client-facing rental site
 - [ ] Remember user birthdays and congratulate
-- [ ] SUS %
-- [ ] PokeBall for catching users, 1% chance.
-- [ ] Search capabilities, google etc.
+- [x] SUS %
+- [x] PokeBall for catching users, 1% chance.
 - [x] Mention Replies
-- [ ] Trivia!
+- [x] Trivia!
 - [ ] Currency/Levels earned for chatting
 - [ ] Reward system/store for chat points
 - [ ] Simple games like gambling points/dueling etc
-- [ ] Banhammer for naughty words lol!
+- [x] Banhammer for Admins!
 - [ ] Shameless plugger for Des/mine work
 - [ ] Simple chat AI?
 
@@ -65,9 +67,10 @@ As of April 8th, this bot is hosted on Heroku and now live.
 - [The Chuck Norris API](https://api.chucknorris.io/)
 - [Inspirational Quotes API](https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373)
 - [The Discord.js Guide](https://discordjs.guide) has been incredibly useful in helping set up dynamic commands.
-- And of course [Stackoverflow](https://stackoverflow.com/) for all those tricky bits
+- [Stackoverflow](https://stackoverflow.com/) for all those tricky bits
 - [This freeCodeCamp tutorial](https://www.freecodecamp.org/news/how-to-create-a-music-bot-using-discord-js-4436f5f3f0f8/) for our music features.
 - [This Video from Codecamp on YouTube](https://www.youtube.com/watch?v=8o25pRbXdFw) Helped me get the basic code structure down which I have since been able to build off of.
 - [Heroku Dev Center](https://devcenter.heroku.com/) To figure out getting the bot hosted.
-- [This Youtube Video by codelyon](https://www.youtube.com/watch?v=riyHsgI2IDs) A more advanced music bot to implement for Rob Otto!
-- And of course, Thank Google.
+- [This Youtube Video by codelyon](https://www.youtube.com/watch?v=riyHsgI2IDs) A more advanced music bot hacked up and customized for Rob Otto!
+- [Open Trivia Database](https://opentdb.com/) for the Trivia API.
+- And of course, Thank [Google](https://www.google.com).

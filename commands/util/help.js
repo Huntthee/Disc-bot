@@ -1,5 +1,7 @@
 const Discord = require("discord.js")
 
+
+// Create a discord embed for listing the available commands and other useful information.
 module.exports = {
   name: 'help',
   description: 'A helpful embed!',
@@ -9,39 +11,26 @@ module.exports = {
     .setAuthor('Rob Otto', 'https://i.imgur.com/RmxTBoQ.png', 'https://github.com/Huntthee/')
     .setThumbnail('https://i.imgur.com/hjKUSlD.png')
 
-    .setTitle('Check out the base code here!')
-    .setURL('https://github.com/Huntthee/Disc-bot/')
-    .setDescription('A helpful little bot capable of all sorts of tricks! Discord and Rental site to come, Keep an eye out for updates!')
+    .setTitle('Some Helpful Info!')
+    .setDescription('Type in any of the following commands for more information on a particular set of commands.')
 
     .addFields(
       {
-        name: '?d20 and ?d100',
-        value: 'Roll the dice and test your luck!'
+        name: 'Music Player!',
+        value: `type **?music** for more info about the music player and its commands.`
       },
       {
-        name: '?joke',
-        value: 'To get some terrible Chuck Norris jokes'
+        name: 'Fun and Entertaining commands',
+        value: `type **?fun** for more info on some silly commands such as sus% and random quotes.`
       },
       {
-        name: '?quote',
-        value: 'For some wonderful quotes supplied by contributor FlameScion'
-      },
-      {
-        name: '?mult and ?add',
-        value: 'To Multiply or Add two numbers'
-      },
-      {
-        name: '?prune',
-        value: 'To delete a set number of comments'
-      },
-      {
-        name: '?kick',
-        value: 'Mod capabilities coming soon!'
+        name: 'Utility commands, for Admins',
+        value: `type **?admin** to see what moderation tools are available to server Admins.`
       }
     )
     // .setImage('https://i.imgur.com/wSTFkRM.png')
     
-    .setFooter('And more to come!', 'https://i.imgur.com/RmxTBoQ.png')
+    .setFooter('Hope that helps!', 'https://i.imgur.com/RmxTBoQ.png')
     .setTimestamp();
 
     if (args.length == 0) {
@@ -52,4 +41,3 @@ module.exports = {
     }
   }
 }
-// Basic help command! nothing attached to it right now. 
